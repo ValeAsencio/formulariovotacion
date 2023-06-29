@@ -3,7 +3,7 @@ formulario.addEventListener('submit', (e) => {
 	e.preventDefault();
     
     //Si pasa todas las validaciones, el formulario se envia al archivo formulario.php
-    if(validaAlias() && validaRut() && validaEmail()){
+    if((validaAlias() && validaRut()) && (validaEmail() && validaCheckbox())){
         //Se obtienen todos los datos del formulario
         var nombre = document.getElementById('nombre').value;
         var alias = document.getElementById('alias').value;
@@ -120,4 +120,25 @@ function validaEmail(){
         return true;
     }
     
+}
+
+function validaCheckbox() {
+    var checkboxes = document.querySelectorAll('.checkbox');
+
+    // Contador para la cantidad de checkboxes seleccionados
+    var contadorSeleccionados = 0;
+  
+    // Recorrer los checkboxes y verificar cuántos están seleccionados
+    checkboxes.forEach(function(checkbox) {
+        if (checkbox.checked) {
+            contadorSeleccionados++;
+        }
+    });
+
+    if(contadorSeleccionados < 2){
+        alert("Seleccione al menos dos canales");
+        return false;
+    }
+
+    return true;
 }
