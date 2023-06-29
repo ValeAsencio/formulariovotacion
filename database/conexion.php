@@ -2,6 +2,8 @@
 
 function conexion(){
 
+    //Conexion a la base de datos. Cambiar los datos de acuerdo al entorno donde se ejecutara la prueba
+
     $servername = "localhost";
     $username = "desis";
     $password = "pruebatecnica";
@@ -15,9 +17,8 @@ function conexion(){
         die("Error en la conexión: " . $conn->connect_error);
     }
 
+    //retorna la conexion
     return $conn;
-    // Cerrar la conexión
-    //$conn->close();
 
 }
 

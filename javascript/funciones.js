@@ -1,11 +1,10 @@
 
 formulario.addEventListener('submit', (e) => {
 	e.preventDefault();
-    /*validaAlias();
-    validaRut();
-    validaEmail();*/
-
+    
+    //Si pasa todas las validaciones, el formulario se envia al archivo formulario.php
     if(validaAlias() && validaRut() && validaEmail()){
+        //Se obtienen todos los datos del formulario
         var nombre = document.getElementById('nombre').value;
         var alias = document.getElementById('alias').value;
         var rut = document.getElementById('rut').value;
@@ -14,8 +13,10 @@ formulario.addEventListener('submit', (e) => {
         var comuna = $('#comuna option:selected').text();
         var candidato = $('#candidato option:selected').text();
 
+        //Se crea una cadena para enviarla al archivo PHP
         var data = nombre + ";" + alias + ";" + rut + ";" + email + ";" + region + ";" + comuna + ";" + candidato;
 
+        //Se utiliza AJAX para enviar la información al servidor
         $.ajax({
             url: "database/formulario.php",
             type: "POST",
@@ -23,14 +24,15 @@ formulario.addEventListener('submit', (e) => {
                 data: data
             },
             success: function(response) {
+                //Si la respuesta es 1, el rut ya hizo la votacion
                 if(response == 1){
                     alert("Rut ya se encuentra registrado");
                 }
-
+                //Si la respuesta es 0, el rut no se encuentra registrado
                 if(response == 0){
                     alert("Rut ingresado correctamente");
                 }
-
+                //Si la respuesta es 99, hubo un error desconocido en la ejecucion del insert
                 if(response == 99){
                     alert("Ha ocurrido un error en el ingreso del voto");
                 }    
@@ -41,10 +43,11 @@ formulario.addEventListener('submit', (e) => {
 	
 });
 
+/*Funcion que valida con expresiones regulares que el alia tenga solo letras y numeros y que sea mayor a 5*/
 function validaAlias(){
     var largo_alias = document.getElementById('alias').value.length;
     var alias = document.getElementById('alias').value;
-    var exp_reg = /^([a-zA-Z0-9_-])*$/;
+    var exp_reg = /^([a-zA-Z0-9_-])*$/; //Expresion regular que valida que la cadena solo tenga letras y numeros
 
     if (largo_alias < 6){
         alert("Alias debe tener más de cinco caracteres");
@@ -59,6 +62,7 @@ function validaAlias(){
     
 }
 
+/* Funcion que valida el rut chileno, con formato 11111111-1 */
 function validaRut(){
     var rut = document.getElementById('rut').value;
 
@@ -98,12 +102,11 @@ function validaRut(){
             alert("Rut no válido");
         }
 
-    }
-      
-    
-    
+    }  
 }
 
+/*Funcion que valida el formato del email sea formato de correo electronico, por ejemplo, ejemplo@gmail.com
+Esto se hizo con una expresion regular que valida el formato de un email */
 function validaEmail(){
     var email = document.getElementById('email').value;
 
@@ -118,7 +121,3 @@ function validaEmail(){
     }
     
 }
-
-
-
-//desis -> pruebatecnica

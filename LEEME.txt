@@ -1,0 +1,35 @@
+Versión de PHP: 7.4.30
+Versión de MySQL: 5.2.0
+
+Pasos a seguir.
+
+1. Ejecutar el dump de la base de datos en su base de datos local mysql. El archivo se encuentra en la carpeta SQL de la raíz del proyecto: /formulariovotacion/SQL/dump_bd_votacion.sql
+	La base de datos se llama “votación”. 
+	Tiene cuatro tablas llamadas región, comuna, candidato, votante.
+	Las tablas región y comuna están relacionadas por el id de la región y a su vez las tablas comuna y candidato están relacionadas por el id de la comuna.
+	La tabla votante guarda los datos del formulario.
+	Una vez ejecutado correctamente el dump se podrá visualizar el esquema y los datos de la base de datos.
+del proyecto.
+
+2. Una vez creada con éxito la base de datos, descargar los archivos del repositorio GIT y subirlos a un servidor web en donde se levantará la página web.
+Generalmente, si se usa Linux, el directorio donde se dejan los archivos es /var/www/html/.
+Para subir los archivos se puede utilizar algún cliente SFTP como Filezilla o algún panel de control del servidor.
+Verificar que los archivos y carpetas tengan permisos de escritura, lectura y ejecución.
+
+3. Una vez descargados y localizados los archivos, abrir el archivo conexión.php que se encuentra en /formulariovotacion/database/conexión.php
+   Al abrir el archivo deberá cambiar el valor de las siguientes variables: 
+	-$servername corresponde al servidor donde se encuentra su base de datos mysql.
+	-$username, el cual es el usuario que está asociado la base de datos, con el cual ejecuto el script del paso 1.
+	-$password la contraseña del usuario anterior.
+	-$database el nombre de la base de datos, que en este caso se llama “votacion”. 
+
+   Para una correcta configuración de parámetros, se aconseja reiniciar el servidor web.
+
+4. Una vez hecha las configuraciones anterior, ir a la siguiente URL:
+http://server/formulariovotacion/formulario.html
+
+En donde dice server, en la url, deberá poner la ip:puerto o dns, según corresponda, en donde están alojados los archivos del sitio web.
+
+Se abrirá un formulario, como el que se mostraba en el pdf de la prueba técnica, para que se pueda probar las diferentes validaciones requeridas.
+
+

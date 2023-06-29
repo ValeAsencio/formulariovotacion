@@ -1,5 +1,9 @@
 <?php
 
+//Script que lee los datos enviados desde el formulario
+
+//Verifica que se envien datos desde el formulario
+
 if (isset($_POST['data'])) {
 
     include("conexion.php");
@@ -8,6 +12,8 @@ if (isset($_POST['data'])) {
     $datos = $_POST['data'];
 
     $arreglo_datos = explode(";", $datos);
+
+    //Se lee cada campo del formulario
 
     $nombre = $arreglo_datos[0];
     $alias = $arreglo_datos[1];
@@ -18,6 +24,8 @@ if (isset($_POST['data'])) {
     $candidato = $arreglo_datos[6];
 
     $respuesta = "";
+
+    //Consulta para verificar si el rut existe o no
 
     $sql = "SELECT rut FROM votante where rut = ?";
     $stmt = $conn->prepare($sql);
@@ -30,6 +38,7 @@ if (isset($_POST['data'])) {
         $respuesta = 1;
     }
     else{
+        //Se inicia la transacción para insertar el nuevo votante
         $conn->begin_transaction();
         try{
             $sql_insert = "INSERT INTO votacion.votante (nombre, alias, rut, email, region, comuna, candidato) VALUES (?, ?, ?, ?, ?, ?, ?)";
@@ -43,13 +52,14 @@ if (isset($_POST['data'])) {
             $respuesta = 0;
 
         }
+        //Si ocurre un error, se hace rollback
         catch(Exception $e){
             $conn->rollback();
             $respuesta = 99;
         }
     }
 
-    //print_r($respuesta);
+    //Se envía la respuesta a AJAX
     echo $respuesta;
                 
     

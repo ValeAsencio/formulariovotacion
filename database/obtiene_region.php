@@ -4,6 +4,8 @@ include("conexion.php");
 
 $conn = conexion();
 
+//Consulta para obtener todas las regiones desde la base de datos
+
 $sql_regiones = "SELECT numero,nombre FROM region";
 
 $result = $conn->query($sql_regiones);
