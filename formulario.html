@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilo/estilo.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Formulario</title>
+</head>
+<body>
+    <p>
+        <b>FORMULARIO DE VOTACIÓN:</b>
+    </p>
+    <br>
+    
+    <form action="" id="formulario" method="POST">
+        <table border="0">
+            <tr>
+                <td>
+                    <label for="Nombre">Nombre y Apellido</label> 
+                </td>
+                <td>
+                    <input type="text" id="nombre" class="ancho" required> 
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="Alias">Alias</label>
+                </td>
+                <td>
+                    <input type="text" id="alias" class="ancho">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="Rut">Rut</label>
+                </td>
+                <td>
+                    <input type="text" id="rut" placeholder="Ingrese rut 11111111-1" class="ancho">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="Email">Email</label>
+                </td>
+                <td>
+                    <input type="text" id="email" placeholder="ejemplo@dom.com" class="ancho">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="region">Región</label>
+                </td>
+                <td>
+                    <select id="region" name="region" class="ancho_select">
+                        <option value="" class="ancho">Selecciona una opción</option>
+                        <!-- Aquí se rellenará el select con los datos obtenidos de PHP -->
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="Comuna">Comuna</label>
+                </td>
+                <td>
+                    <select name="comuna" id="comuna" class="ancho_select">
+                        <option value="" >Selecciona una opción</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="Candidato">Candidato</label>
+                </td>
+                <td>
+                    <select name="candidato" id="candidato" class="ancho_select">
+                        <option value="">Selecciona una opción</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="">Como se entero de nosotros</label>
+                </td>
+                <td>
+                    <input type="checkbox" name="Web" id="Web">
+                    <label for="">Web</label>
+                    <input type="checkbox" name="Web" id="Web">
+                    <label for="">TV</label>
+                    <input type="checkbox" name="Web" id="Web">
+                    <label for="">Redes Sociales</label>
+                    <input type="checkbox" name="Web" id="Web">
+                    <label for="">Amigo</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="submit">Votar</button>
+                </td>
+                
+            </tr>
+        </table>
+    </form>
+    <script src="javascript/funciones.js"></script>
+        
+    <script src="javascript/ajax.js">
+        
+    </script>
+</body>
+</html>
